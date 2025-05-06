@@ -21,21 +21,28 @@
   
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Responsive YouTube Video</title>
   <style>
     body {
       margin: 0;
-      background-color: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    section.video-section {
+      padding: 40px 20px;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
     }
 
     .video-container {
       position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      width: 90%;
+      max-width: 800px;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
       height: 0;
       overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .video-container iframe {
@@ -103,7 +110,130 @@
     }
   </style>
   
-  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    section.video-section {
+      padding: 40px 20px;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .flow-container {
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .flow-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .flow-title span {
+      color: #9c72a1;
+    }
+
+    .steps-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      margin-top: 20px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      padding: 20px 10px;
+      width: max-content;
+      margin: auto;
+    }
+
+    .step {
+      flex: 0 0 auto;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      min-width: 160px;
+      scroll-snap-align: center;
+    }
+
+    .step-icon {
+      background-color: #ccc;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: background-color 0.3s;
+    }
+
+    .step-text {
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .step.active .step-icon {
+      background-color: #9c72a1;
+    }
+
+    .step.active .step-text {
+      color: #9c72a1;
+    }
+
+    .steps-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .steps-wrapper {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+    }
+  </style>
   
   
 </head>
@@ -249,49 +379,60 @@
 
 <!-- project section starts   -->
 
-<section id="project" class="project">
+<section >
+  <div class="flow-container">
+    <div class="flow-title">PROJECT COMPLETION IN <span>40 WORKING DAYS*</span></div>
+    <div class="steps-wrapper" id="stepsWrapper">
+      <div class="steps" id="steps">
+        <div class="step">
+          <div class="step-icon">👥</div>
+          <div class="step-text">Talk to our Interior Designer<br>& Get an Estimate</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">📝</div>
+          <div class="step-text">Detailed Drawing<br>and Approval</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🏭</div>
+          <div class="step-text">Production at Own<br>Factories</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🚚</div>
+          <div class="step-text">Material Delivery<br>& Execution</div>
+        </div>
+        <div class="step">
+          <div class="step-icon">🛠️</div>
+          <div class="step-text">On Time Project<br>Hand Over</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="heading">our projects</div>
-  
-  <div class="box-container mx-auto">
-  
-  <div class="box">
-    <a href="images/img1.jpg" title="house">
-      <img src="images/img-1.jpg" alt="">
-    </a>
-  </div>
-  
-  <div class="box">
-    <a href="images/img2.jpg" title="hall">
-      <img src="images/img-2.jpg" alt="">
-    </a>
-  </div>
-  
-  <div class="box">
-    <a href="images/img3.jpg" title="pole">
-      <img src="images/img-3.jpg" alt="">
-    </a>
-  </div>
-  
-  <div class="box">
-    <a href="images/img4.jpg" title="kitchen">
-      <img src="images/img-4.jpg" alt="">
-    </a>
-  </div>
-  
-  <div class="box">
-    <a href="images/img5.jpg" title="bath">
-      <img src="images/img-5.jpg" alt="">
-    </a>
-  </div>
-  
-  <div class="box">
-    <a href="images/img6.jpg" title="toilet">
-      <img src="images/img-6.jpg" alt="">
-    </a>
-  </div>
-  
-  </div>
+  <script>
+    const stepsWrapper = document.getElementById("stepsWrapper");
+    const steps = document.querySelectorAll(".step");
+    let index = 0;
+
+    function cycleSteps() {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+
+      const currentStep = steps[index];
+      const wrapperCenter = stepsWrapper.offsetWidth / 2;
+      const stepCenter = currentStep.offsetLeft + currentStep.offsetWidth / 2;
+      const scrollPosition = stepCenter - wrapperCenter;
+
+      stepsWrapper.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+
+      index = (index + 1) % steps.length;
+    }
+
+    setInterval(cycleSteps, 1500);
+  </script>
   
   </section>
 
@@ -299,66 +440,19 @@
 
 
  
+ 
+
   <section class="video-section">
     <div class="video-container">
-			 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YouTube Video Section</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    section.video-section {
-      padding: 40px 20px;
-      background-color: #f8f8f8;
-      display: flex;
-      justify-content: center;
-    }
-
-    .video-container {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-
-  <section class="video-section">
-
     <iframe 
       src="https://www.youtube.com/embed/-sAOWhvheK8" 
       title="Marvel Studios’ Thunderbolts* | Final Trailer | In Theaters May 2" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
       allowfullscreen>
     </iframe>
-  
-  </section>
-
-</body>
-</html>
+  </div>
 
 
-    </div>
   </section>
 
 
@@ -393,14 +487,7 @@
 
 
 
-<!-- jquery file link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- magnific popup link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-
-<!-- main/custom javascript file link  -->
-<script src="main.js"></script>
 
 </body>
 </html>
