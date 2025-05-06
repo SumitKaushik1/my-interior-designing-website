@@ -308,12 +308,67 @@
  
   <section class="video-section">
     <div class="video-container">
-			   <iframe 
-			  src="https://www.youtube.com/embed/ysz5S6PUM-U"
-			  title="YouTube video player"
-			  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			  allowfullscreen>
-			</iframe>
+			 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Video Section</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    section.video-section {
+      padding: 40px 20px;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="video-section">
+    <div class="video-container">
+			<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/ysz5S6PUM-U" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowfullscreen>
+</iframe>
+
+
+    </div>
+  </section>
+
+</body>
+</html>
+
 
     </div>
   </section>
