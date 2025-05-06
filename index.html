@@ -21,28 +21,21 @@
   
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive YouTube Video</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    section.video-section {
-      padding: 40px 20px;
-      background-color: #f8f8f8;
-      display: flex;
-      justify-content: center;
+      background-color: #000;
     }
 
     .video-container {
       position: relative;
-      width: 90%;
-      max-width: 800px;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .video-container iframe {
@@ -351,21 +344,14 @@
 <body>
 
   <section class="video-section">
-    <div class="video-container">
-	<iframe 
-  width="640" 
-  height="360" 
-  src="https://www.youtube.com/embed/-sAOWhvheK8" 
-  title="Marvel Studios’ Thunderbolts* | Final Trailer | In Theaters May 2" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  allowfullscreen>
-</iframe>
 
-
-
-    </div>
+    <iframe 
+      src="https://www.youtube.com/embed/-sAOWhvheK8" 
+      title="Marvel Studios’ Thunderbolts* | Final Trailer | In Theaters May 2" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  
   </section>
 
 </body>
