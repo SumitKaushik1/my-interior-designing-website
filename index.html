@@ -236,6 +236,82 @@
   </style>
   
   
+  
+   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slider {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .feature {
+      flex: 0 0 auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background-color 1s ease, color 1s ease;
+    }
+
+    .feature-title {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .feature-subtext {
+      font-size: 12px;
+    }
+
+    .highlight,
+    .feature:hover {
+      background-color: #9C5B9E !important;
+      color: white !important;
+    }
+
+    @media (max-width: 768px) {
+      .slider-wrapper {
+        justify-content: flex-start;
+      }
+
+      .slider {
+        width: max-content;
+        padding-left: 20px;
+      }
+    }
+  </style>
+  
+  
+ 
+  
 </head>
 <body>
   
@@ -335,45 +411,95 @@
 
 <!-- service section starts  -->
 
-<section id="service" class="service">
+<section >
+  <h2>PROFESSIONAL HOME INTERIOR DESIGN COMPANY</h2>
 
-<h1 class="heading">our services</h1>
-
-<div class="box-container mx-auto">
-
-  <div class="box">
-    <div class="fas fa-palette"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
+  <div class="slider-wrapper" id="sliderWrapper">
+    <div class="slider" id="slider">
+      <div class="feature">
+        <div class="feature-title">SINCE</div>
+        <div class="feature-subtext">2024</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">PREMIUM</div>
+        <div class="feature-subtext">Materials</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">10 YEARS</div>
+        <div class="feature-subtext">Warranty</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">COMPLETION</div>
+        <div class="feature-subtext">40 Days</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">PROJECTS</div>
+        <div class="feature-subtext">25/Month</div>
+      </div>
+      <div class="feature">
+        <div class="feature-title">LIFELONG</div>
+        <div class="feature-subtext">Support</div>
+      </div>
+    </div>
   </div>
 
-  <div class="box">
-    <div class="fas fa-tools"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
-  </div>
+  <script>
+    const features = document.querySelectorAll(".feature");
+    const slider = document.getElementById("slider");
+    const sliderWrapper = document.getElementById("sliderWrapper");
+    let currentIndex = 0;
+    let interval;
 
-  <div class="box">
-    <div class="fas fa-house-user"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
-  </div>
+    function highlight(index) {
+      features.forEach((f, i) => f.classList.toggle("highlight", i === index));
 
-  <div class="box">
-    <div class="fas fa-couch"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
-  </div>
+      if (window.innerWidth <= 768) {
+        const currentFeature = features[index];
+        const wrapperCenter = sliderWrapper.offsetWidth / 2;
+        const featureCenter = currentFeature.offsetLeft + currentFeature.offsetWidth / 2;
+        const scrollPosition = featureCenter - wrapperCenter;
 
-  <div class="box">
-    <div class="fas fa-bed"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
-  </div>
+        sliderWrapper.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth"
+        });
+      } else {
+        slider.style.transform = "translateX(0)";
+      }
+    }
 
-  <div class="box">
-    <div class="fas fa-bath"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde assumenda odio sint voluptatibus sed, quae deserunt fugit voluptates nisi!</p>
-  </div>
+    function startLoop() {
+      interval = setInterval(() => {
+        highlight(currentIndex);
+        currentIndex = (currentIndex + 1) % features.length;
+      }, 2000);
+    }
 
-</div>
+    // Desktop hover behavior
+    features.forEach((f, i) => {
+      f.addEventListener("mouseenter", () => {
+        if (window.innerWidth > 768) {
+          clearInterval(interval);
+          highlight(i);
+          currentIndex = (i + 1) % features.length;
+        }
+      });
+
+      f.addEventListener("mouseleave", () => {
+        if (window.innerWidth > 768) startLoop();
+      });
+    });
+
+    highlight(currentIndex);
+    startLoop();
+  </script>
 
 </section>
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 <!-- service section ends -->
 
