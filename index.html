@@ -310,7 +310,7 @@
   </style>
   
   
-    <style>
+  <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -353,7 +353,7 @@
 .floating-icons {
   position: fixed;
   right: 20px;
-  bottom: 220px; /* updated to leave room for phone button */
+  bottom: 136px; /* updated to leave room for phone button */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -362,28 +362,27 @@
 
 
 .estimate-btn {
-    font-size: large;
-
-  position: fixed;
-  right: 20px;
-  bottom: 80px; /* separate from the floating-icons */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   background-color: #A259FF;
   color: white;
-  padding: 10px 18px;
+  padding: 10px;
   border-radius: 25px;
   font-weight: bold;
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 9999;
+      font-size: 21px;
 }
+
 
 
     .modal {
   display: none;
   position: fixed;
   z-index: 10000; /* was 1000 before — now above buttons */
-  left: 0px;
+  left: -11px;
   top: 0;
   width: 100%;
   height: 100%;
@@ -489,6 +488,15 @@
     height: 24px;
   }
 }
+
+
+
+
+	
+	
+	
+
+
   </style>
   
  
@@ -814,6 +822,7 @@
 
 
 
+
 <div class="floating-wrapper">
   <div class="floating-icons">
     <a href="https://wa.me/919999999999" target="_blank" class="circle-btn" title="WhatsApp">
@@ -825,11 +834,12 @@
     <a href="tel:+919999999999" class="circle-btn" title="Call Us">
       <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Call" />
     </a>
+    
+    <!-- Move Free Estimate button here -->
+    <button class="estimate-btn" onclick="openModal()">Free Estimate</button>
   </div>
-
-  <!-- Free Estimate Button -->
-  <button class="estimate-btn" onclick="openModal()">Free Estimate</button>
 </div>
+
 
 
 
@@ -886,7 +896,6 @@
   cbScript.async = true;
   document.head.appendChild(cbScript);
 </script>
-  
 
 
 
