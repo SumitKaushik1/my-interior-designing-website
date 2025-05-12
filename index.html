@@ -353,14 +353,17 @@
 .floating-icons {
   position: fixed;
   right: 20px;
-  bottom: 160px; /* move these above the estimate button */
+  bottom: 220px; /* updated to leave room for phone button */
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 9999;
 }
 
+
 .estimate-btn {
+    font-size: large;
+
   position: fixed;
   right: 20px;
   bottom: 80px; /* separate from the floating-icons */
@@ -453,18 +456,39 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-    }
+    
+	
+	
+	
+	@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+  }
 
-    @media (max-width: 480px) {
-      .modal-content {
-        width: 95%;
-      }
-      .estimate-btn {
-        width: auto;
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-    }
+  .estimate-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .floating-icons {
+    right: 20px;
+    bottom: 160px;
+  }
+
+  .circle-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .circle-btn img {
+    width: 24px;
+    height: 24px;
+  }
+}
   </style>
   
  
@@ -790,19 +814,23 @@
 
 
 
-<!-- Floating Contact Buttons (Circular WhatsApp & Email) -->
-<div class="floating-icons">
-  <a href="https://wa.me/919999999999" target="_blank" class="circle-btn" title="WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-  </a>
+<div class="floating-wrapper">
+  <div class="floating-icons">
+    <a href="https://wa.me/919999999999" target="_blank" class="circle-btn" title="WhatsApp">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+    </a>
+    <a href="mailto:example@example.com" class="circle-btn" title="Email">
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+    </a>
+    <a href="tel:+919999999999" class="circle-btn" title="Call Us">
+      <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Call" />
+    </a>
+  </div>
 
-  <a href="mailto:example@example.com" class="circle-btn" title="Email">
-    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
-  </a>
+  <!-- Free Estimate Button -->
+  <button class="estimate-btn" onclick="openModal()">Free Estimate</button>
 </div>
 
-<!-- Separate Estimate Button -->
-<button class="estimate-btn" onclick="openModal()">Free Estimate</button>
 
 
   <!-- Modal -->
@@ -858,7 +886,6 @@
   cbScript.async = true;
   document.head.appendChild(cbScript);
 </script>
-
   
 
 
