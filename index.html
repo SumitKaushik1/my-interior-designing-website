@@ -310,6 +310,163 @@
   </style>
   
   
+    <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+.contact-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 100px; /* Move them up above Chatbase */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999; /* Make sure it's on top */
+}
+
+    .circle-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .circle-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .circle-btn img {
+      width: 28px;
+      height: 28px;
+    }
+
+.floating-icons {
+  position: fixed;
+  right: 20px;
+  bottom: 160px; /* move these above the estimate button */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.estimate-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 80px; /* separate from the floating-icons */
+  background-color: #A259FF;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 10000; /* was 1000 before — now above buttons */
+  left: 0px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+
+.modal-content {
+  background-color: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  box-sizing: border-box; /* Add this */
+}
+
+    .modal-content h2 {
+      margin-top: 0;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .modal-content .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal-content p {
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content form input,
+    .modal-content form .phone-field {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+	  padding-right :  inherit;
+    }
+
+    .phone-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phone-field span {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .modal-content form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #6E42A5;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .modal-content {
+        width: 95%;
+      }
+      .estimate-btn {
+        width: auto;
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+  
  
   
 </head>
@@ -633,7 +790,65 @@
 
 
 
-<script>
+<!-- Floating Contact Buttons (Circular WhatsApp & Email) -->
+<div class="floating-icons">
+  <a href="https://wa.me/919999999999" target="_blank" class="circle-btn" title="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
+
+  <a href="mailto:example@example.com" class="circle-btn" title="Email">
+    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
+  </a>
+</div>
+
+<!-- Separate Estimate Button -->
+<button class="estimate-btn" onclick="openModal()">Free Estimate</button>
+
+
+  <!-- Modal -->
+  <div id="estimateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>GET FREE ESTIMATE</h2>
+      <p>Please fill out the enquiry below and we will get back to you as soon as possible</p>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <div class="phone-field">
+          <span>🇮🇳 +91</span>
+          <input type="tel" placeholder="Contact Number 1" required />
+        </div>
+        <div class="phone-field">
+          <span>🇮🇳 +91</span>
+          <input type="tel" placeholder="Contact Number 2" />
+        </div>
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Project Location" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("estimateModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("estimateModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("estimateModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+  
+  
+  
+  
+  <script>
   window.chatbase = window.chatbase || function() {
     (window.chatbase.q = window.chatbase.q || []).push(arguments);
   };
@@ -644,6 +859,7 @@
   document.head.appendChild(cbScript);
 </script>
 
+  
 
 
 
