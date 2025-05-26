@@ -499,6 +499,305 @@
 
   </style>
   
+  
+  <style>
+  
+   .heading-of {
+            
+            text-align: center;
+            padding: 20px 0 0;
+        }
+		
+		  .what-we-do-text {
+            font-size: 1.6em;
+            font-weight: 500;
+            color: #1a1616;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .design-showcase {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .grid-item.kitchen {
+                grid-column: span 2;
+                grid-row: 1;
+            }
+
+            .grid-item.dining {
+                grid-column: 3;
+                grid-row: span 2;
+            }
+
+            .grid-item.bedroom {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .grid-item.living {
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            cursor: pointer;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .grid-item:hover .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .category-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .consultant-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .consultant-button {
+            display: inline-block;
+            background-color: #6a1b9a;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 2.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .consultant-button:hover {
+            background-color: #4a0f6a;
+        }
+
+        @media (max-width: 480px) {
+            .category-title {
+                font-size: 1.8em;
+            }
+
+            .consultant-button {
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox-content {
+            max-width: calc(100vw - 40px);
+            max-height: calc(100vh - 160px);
+            object-fit: contain;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .lightbox-button {
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+            max-width: 150px;
+        }
+    
+            .consultant-button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .consultant-button {
+      display: inline-block;
+      background-color: #6a1b9a;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 2.1em;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .consultant-button:hover {
+      background-color: #4a0f6a;
+    }
+
+    .form-lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }
+
+    .form-popup {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      margin: 40px 0;
+      position: relative;
+    }
+
+    .form-popup h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .form-popup p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .form-popup input,
+    .form-popup select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .form-popup button {
+      width: 100%;
+      padding: 10px;
+      background-color: #7f3f98;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-popup button:hover {
+      background-color: #662d83;
+    }
+
+    .form-close {
+      position: absolute;
+      top: 10px; /* Adjusted top for better positioning */
+      right: 15px; /* Adjusted right for better positioning */
+      font-size: 28px;
+      color: #333; /* Changed color to dark for better visibility on white background */
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .category-title {
+        font-size: 1.8em;
+      }
+
+      .consultant-button {
+        padding: 12px 20px;
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .form-popup {
+        max-width: 90%;
+        padding: 15px;
+      }
+    }
+
+  
+  </style>
+
+  
  
   
 </head>
@@ -564,37 +863,10 @@
 
 </section>
 
-<!-- home section ends -->
 
 
-<!-- about section starts  -->
 
-<section id="about" class="about container">
 
-<h1 class="heading">about us</h1>
-
-<div class="row align-items-center">
-
-  <div class="col-md-6 image">
-    <img src="images/about-image.jpg" width="90%" alt="">
-  </div>
-
-  <div class="col-md-6 info">
-    <h2>the best Interior Design in the city</h2>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste reprehenderit sequi enim porro dolor explicabo distinctio voluptates exercitationem nam excepturi?</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptatibus sint totam, ea velit eius. Praesentium consequuntur sint porro, similique ut corrupti dolorem eligendi. Sunt porro quos libero illum quo officia laboriosam quisquam, nam totam?</p>
-    <div class="icons">
-      <a href="https://facebook.com/freewebsitecode" class="fab fa-facebook-f"></a>
-      <a href="https://twitter.com/freewebsitecode" class="fab fa-twitter"></a>
-      <a href="https://www.linkedin.com/in/freewebsitecode/" class="fab fa-linkedin"></a>
-      <a href="https://www.facebook.com/groups/1541619732598946" class="fab fa-github"></a>
-      <a href="https://youtube.com/freewebsitecode" class="fab fa-youtube"></a>
-    </div>
-  </div>
-
-</div>
-
-</section>
 
 <br/>
 <br/>
@@ -602,6 +874,16 @@
 <br/>
 
 <!-- about section ends -->
+
+
+
+
+
+
+
+
+
+
 
 <!-- service section starts  -->
 
@@ -689,17 +971,205 @@
   </script>
 
 </section>
+
+
+
 <br/>
 <br/>
 <br/>
 <br/>
+<br/>
+
 
 
 <!-- service section ends -->
 
+<section>
+<h1 class="heading-of">
+        <div class="what-we-do-text">WHAT WE DO</div>
+  </h1>
+
+       <section class="design-showcase">
+        <div class="grid-container">
+            <div class="grid-item kitchen" data-category="kitchen">
+                <img src="./images/kitchen/kitchen-2.webp" alt="Kitchen Design">
+                <div class="overlay">
+                    <h3 class="category-title">KITCHEN</h3>
+                </div>
+            </div>
+            <div class="grid-item dining" data-category="dining">
+                   <img src="./images/dining/dining (1).webp" alt="Kitchen Design">
+                <div class="overlay">
+                    <h3 class="category-title">DINING</h3>
+                </div>
+            </div>
+            <div class="grid-item bedroom" data-category="bedroom">
+                <img src="./images/bedroom/bedroom (1).webp" alt="Bedroom Design">
+                <div class="overlay">
+                    <h3 class="category-title">BEDROOM</h3>
+                </div>
+            </div>
+            <div class="grid-item living" data-category="living">
+                <img src="./images/living/living (1).webp" alt="Living Design">
+                <div class="overlay">
+                    <h3 class="category-title">LIVING</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultant-button-container">
+            <a href="#" class="consultant-button">Talk to Our Design Consultant</a>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox">
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Enlarged Image">
+        <div class="lightbox-controls">
+            <button class="lightbox-button" id="prevBtn">Previous</button>
+            <button class="lightbox-button" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const imageSets = {
+            kitchen: ["./images/kitchen/kitchen-1.webp", "./images/kitchen/kitchen-2.webp", "./images/kitchen/kitchen-3.webp"],
+            dining: [
+               "./images/dining/dining (1).webp", "./images/dining/dining (2).webp", "./images/dining/dining (3).webp", "./images/dining/dining (4).webp", "./images/dining/dining (5).webp", "./images/dining/dining (6).webp", "./images/dining/dining (7).webp"
+
+            ],
+            bedroom: [
+                "./images/bedroom/bedroom (1).webp",
+                "./images/bedroom/bedroom (2).webp",
+                "./images/bedroom/bedroom (3).webp",
+                "./images/bedroom/bedroom (4).webp",
+                "./images/bedroom/bedroom (5).webp",
+                "./images/bedroom/bedroom (6).webp",
+                "./images/bedroom/bedroom (7).webp",
+                "./images/bedroom/bedroom (8).webp",
+                "./images/bedroom/bedroom (9).webp",
+                "./images/bedroom/bedroom (10).webp",
+                "./images/bedroom/bedroom (11).webp",
+                "./images/bedroom/bedroom (12).webp",
+                "./images/bedroom/bedroom (13).webp"
+                
+            ],
+            living: [
+            "./images/living/living (1).webp", "./images/living/living (2).webp", "./images/living/living (3).webp", "./images/living/living (4).webp", "./images/living/living (5).webp", "./images/living/living (6).webp", "./images/living/living (7).webp", "./images/living/living (8).webp", "./images/living/living (9).webp", "./images/living/living (10).webp", "./images/living/living (11).webp", "./images/living/living (12).webp", "./images/living/living (13).webp", "./images/living/living (14).webp", "./images/living/living (15).webp", "./images/living/living (16).webp", "./images/living/living (17).webp", "./images/living/living (18).webp", "./images/living/living (19).webp", "./images/living/living (20).webp", "./images/living/living (21).webp", "./images/living/living (22).webp", "./images/living/living (23).webp", "./images/living/living (24).webp", "./images/living/living (25).webp", "./images/living/living (26).webp", "./images/living/living (27).webp", "./images/living/living (28).webp", "./images/living/living (29).webp", "./images/living/living (30).webp", "./images/living/living (31).webp", "./images/living/living (32).webp", "./images/living/living (33).webp", "./images/living/living (34).webp", "./images/living/living (35).webp", "./images/living/living (36).webp", "./images/living/living (37).webp", "./images/living/living (38).webp", "./images/living/living (39).webp"
+
+            ]
+        };
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentCategory = '';
+        let presentIndex = 0;
+
+        function openLightbox(category, index) {
+            currentCategory = category;
+            presentIndex = index;
+            lightboxImg.src = imageSets[category][index];
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function showNextImage() {
+            presentIndex = (presentIndex + 1) % imageSets[currentCategory].length;
+            lightboxImg.src = imageSets[currentCategory][presentIndex];
+        }
+
+        function showPrevImage() {
+            presentIndex = (presentIndex - 1 + imageSets[currentCategory].length) % imageSets[currentCategory].length;
+            lightboxImg.src = imageSets[currentCategory][presentIndex];
+        }
+
+        document.querySelectorAll('.grid-item').forEach(item => {
+            const category = item.dataset.category;
+            item.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * imageSets[category].length);
+                openLightbox(category, randomIndex);
+            });
+        });
+
+        lightboxImg.addEventListener('click', showNextImage);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        nextBtn.addEventListener('click', showNextImage);
+        prevBtn.addEventListener('click', showPrevImage);
+    </script>
+
+   
+    <div id="formLightbox" class="form-lightbox">
+  <div class="form-popup">
+    <span class="form-close" onclick="closeForm()">&times;</span>
+    <h2>Talk to Our Design Consultant</h2>
+    <hr>
+    <p>Fill in your details and we’ll get back to you.</p>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <input type="tel" placeholder="Your Phone Number">
+    <input type="text" placeholder="Your Project Location">
+    <button type="submit">Submit</button>
+  </div>
+</div>
+
+<script>
+  const formLightbox = document.getElementById('formLightbox');
+  const consultantBtn = document.querySelector('.consultant-button');
+
+  consultantBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    formLightbox.style.display = 'flex';
+  });
+
+  function closeForm() {
+    formLightbox.style.display = 'none';
+  }
+
+  // Optional: Close form on click outside
+  window.addEventListener('click', function (e) {
+    if (e.target === formLightbox) {
+      closeForm();
+    }
+  });
+</script>
+
+
+
+</section>
+
+
+</section>
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+
 <!-- project section starts   -->
 
-<section >
+<section>
   <div class="flow-container">
     <div class="flow-title">PROJECT COMPLETION IN <span>40 WORKING DAYS*</span></div>
     <div class="steps-wrapper" id="stepsWrapper">
