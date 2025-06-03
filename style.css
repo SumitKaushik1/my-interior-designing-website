@@ -8,7 +8,7 @@
   margin:0; padding:0;
   box-sizing: border-box;
   transition:all .2s linear;
-  text-transform: capitalize;
+  text-transform: inherit;
   font-family: 'Exo 2', sans-serif;
 }
 
