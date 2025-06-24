@@ -2280,15 +2280,45 @@
   
   
   
-  <script>
-  window.chatbase = window.chatbase || function() {
-    (window.chatbase.q = window.chatbase.q || []).push(arguments);
+<script>
+(function () {
+  if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+    
+    // Define chatbase function queue if not already defined
+    window.chatbase = (...args) => {
+      if (!window.chatbase.q) {
+        window.chatbase.q = [];
+      }
+      window.chatbase.q.push(args);
+    };
+
+    // Use Proxy to allow property access and queuing
+    window.chatbase = new Proxy(window.chatbase, {
+      get(target, prop) {
+        if (prop === "q") {
+          return target.q;
+        }
+        return (...args) => target(prop, ...args);
+      },
+    });
+  }
+
+  // Function to load Chatbase script
+  const onLoad = function () {
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "ZoZtCEhcUefLrFejgPgJh";
+    script.domain = "www.chatbase.co";
+    document.body.appendChild(script);
   };
-  var cbScript = document.createElement("script");
-  cbScript.src = "https://www.chatbase.co/embed.min.js";
-  cbScript.id = "lHQ7-y2ROd2vipgtv8_pm";
-  cbScript.async = true;
-  document.head.appendChild(cbScript);
+
+  // Load script based on document readiness
+  if (document.readyState === "complete") {
+    onLoad();
+  } else {
+    window.addEventListener("load", onLoad);
+  }
+})();
 </script>
 
 
