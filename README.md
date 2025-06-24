@@ -11,3 +11,4 @@ https://www.adobe.com/in/express/feature/image/convert/svg <br>
 https://www.svgviewer.dev/ <br>
 https://imageresizer.com/ <br>
 https://www.img2go.com/resize-image <br>
+https://pinetools.com/round-corners-image <br>
