@@ -1642,6 +1642,7 @@
       width: 100%;
       height: 80vh;
       overflow: hidden;
+      touch-action: pan-y;
     }
     
     .slide {
@@ -1682,32 +1683,6 @@
     
     .slide-content p {
       font-size: 4.2rem;
-    }
-    
-    .controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      z-index: 10;
-      transform: translateY(-50%);
-    }
-    
-    .controls button {
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      transition: all 0.3s ease;
-    }
-    
-    .controls button:hover {
-      background: rgba(0, 0, 0, 0.8);
     }
     
     .dots {
@@ -1854,12 +1829,6 @@
       </div>
     </div>
     
-    <!-- Controls -->
-    <div class="controls">
-      <button class="prev" aria-label="Previous slide">&#10094;</button>
-      <button class="next" aria-label="Next slide">&#10095;</button>
-    </div>
-    
     <!-- Dots -->
     <div class="dots">
       <div class="dot active" data-index="0"></div>
@@ -1872,11 +1841,13 @@
     document.addEventListener('DOMContentLoaded', function() {
       const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      const prevBtn = document.querySelector('.prev');
-      const nextBtn = document.querySelector('.next');
+      const slider = document.querySelector('.slider-container');
       let currentSlide = 0;
       let slideInterval;
       const slideDuration = 5000; // 5 seconds
+      let startX = 0;
+      let endX = 0;
+      let isDragging = false;
       
       // Preload all images to prevent flash
       function preloadImages() {
@@ -1928,19 +1899,43 @@
         clearInterval(slideInterval);
       }
       
-      // Event listeners
-      nextBtn.addEventListener('click', () => {
-        stopSlider();
-        nextSlide();
-        startSlider();
-      });
+      // Touch and mouse events for swiping
+      slider.addEventListener('mousedown', handleStart);
+      slider.addEventListener('touchstart', handleStart);
+      slider.addEventListener('mousemove', handleMove);
+      slider.addEventListener('touchmove', handleMove);
+      slider.addEventListener('mouseup', handleEnd);
+      slider.addEventListener('mouseleave', handleEnd);
+      slider.addEventListener('touchend', handleEnd);
       
-      prevBtn.addEventListener('click', () => {
+      function handleStart(e) {
         stopSlider();
-        prevSlide();
-        startSlider();
-      });
+        isDragging = true;
+        startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+      }
       
+      function handleMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        endX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+      }
+      
+      function handleEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const threshold = 50; // Minimum distance to trigger slide change
+        
+        if (startX - endX > threshold) {
+          nextSlide();
+        } else if (endX - startX > threshold) {
+          prevSlide();
+        }
+        
+        startSlider();
+      }
+      
+      // Dot navigation
       dots.forEach(dot => {
         dot.addEventListener('click', function() {
           stopSlider();
@@ -1950,7 +1945,6 @@
       });
       
       // Pause on hover
-      const slider = document.querySelector('.slider-container');
       slider.addEventListener('mouseenter', stopSlider);
       slider.addEventListener('mouseleave', startSlider);
       
@@ -1973,6 +1967,7 @@
     });
   </script>
   </section>
+  
 
 
 
