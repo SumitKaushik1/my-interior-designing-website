@@ -355,7 +355,7 @@
 
 .floating-icons {
   position: fixed;
-  right: 20px;
+  right: 3px;
   bottom: 136px; /* updated to leave room for phone button */
   display: flex;
   flex-direction: column;
@@ -1787,6 +1787,41 @@
 		
     </header>
 
+
+<script>
+        // JavaScript for Hamburger Menu Toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mainNav = document.getElementById('mainNav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close nav when a link is clicked (for single-page navigation or on mobile)
+        document.querySelectorAll('#mainNav ul li a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 992) { // Only close on mobile
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+
+        // Placeholder for dropdowns - actual JS needed for functional dropdowns
+        document.querySelectorAll('.main-nav ul li').forEach(li => {
+            const arrow = li.querySelector('.arrow.down');
+            if (arrow) {
+                // Prevent immediate navigation for parent links with dropdowns
+                li.querySelector('a').addEventListener('click', (e) => {
+                     // Check if it's a mobile view or if dropdown is present
+                    if (window.innerWidth <= 992 || li.querySelectorAll('ul').length > 0) {
+                        e.preventDefault();
+                        li.classList.toggle('open');
+                        arrow.style.transform = li.classList.contains('open') ? 'rotate(180deg)' : 'rotate(45deg)';
+                    }
+                });
+            }
+        });
+    </script>
    
    
 	
