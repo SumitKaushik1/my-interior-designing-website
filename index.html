@@ -1250,12 +1250,20 @@
             z-index: 1;
         }
 
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px; /* Limit width of text content */
-            padding: 0 20px;
-        }
+       .slide-content {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: white;
+  max-width: 60%;
+  text-align: left;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+      p{
+	  margin-bottom : 11rem;
+	  }
+
 
         .slide-content h1 {
             font-family: 'Montserrat', sans-serif; /* Example font */
@@ -1265,19 +1273,15 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .slide-content h2 {
-            font-family: 'Montserrat', sans-serif; /* Example font */
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
+       .slide-content h2 {
+  font-size: 3rem;   /* Adjusted heading size */
+  margin-bottom: 10px;
+}
 
-        .slide-content p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
+      .slide-content p {
+  font-size: 1.5rem; /* Adjusted paragraph size */
+  font-weight: 400;
+}
         .cta-button {
             background-color: #f7a800; /* Orange color */
             color: white;
@@ -1534,7 +1538,10 @@
         }
 
         @media (max-width: 768px) {
-            .logo img {
+           
+
+
+		   .logo img {
                 height: 62px;
             }
             .slide-content h1 {
@@ -1567,6 +1574,20 @@
             .social-sidebar a:hover {
                 width: 100px;
             }
+			
+			
+			.slide-content {
+    bottom: 20px;
+    left: 20px;
+    max-width: 90%;
+  }
+  .slide-content h2 {
+    font-size: 2rem;
+  }
+  .slide-content p {
+    font-size: 1rem;
+  }
+			
         }
 
         @media (max-width: 480px) {
@@ -1681,12 +1702,12 @@
     }
     
     .slide-content h2 {
-      font-size: 8.5rem;
+      font-size: 4.0rem;
       margin-bottom: 15px;
     }
     
     .slide-content p {
-      font-size: 4.2rem;
+      font-size: 2.9rem;
     }
     
     .dots {
@@ -1728,6 +1749,11 @@
       }
     }
   </style>
+  
+  
+  
+  
+  
   
 </head>
 <body>
