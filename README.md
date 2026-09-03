@@ -180,4 +180,3 @@ Sometimes faster, sometimes slower (up to a week).
 ⚡Tip: While waiting, you can already prepare your DNS records in Cloudflare and your custom domain setting in GitHub. As soon as EU.org approves, everything will go live automatically.
 
 👉 Do you want me to show you how to pre-configure the GitHub repo settings now, so you don’t have to wait later?
-<br>
